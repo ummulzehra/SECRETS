@@ -27,8 +27,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://admin-ummul:Ummul3131@cluster0.55gepwk.mongodb.net/userDB",{useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.set("useCreateIndex", true);
+// mongoose.connect(,{useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.set("useCreateIndex", true);
+// mongoose
+  mongoose.connect("mongodb+srv://admin-ummul:Ummul3131@cluster0.55gepwk.mongodb.net/userDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => console.log("Database connected!"))
+  .catch(err => console.log(err));
 
 const userSchema = new mongoose.Schema ({
   email: String,
